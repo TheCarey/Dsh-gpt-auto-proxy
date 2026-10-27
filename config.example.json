@@ -1,0 +1,14 @@
+{
+  "$comment": "复制为 ~/.dsh/gpt-auto-proxy.json 后按需修改。不要把真实 token 写进这个文件。",
+  "autoStart": true,
+  "port": 8787,
+  "proxy": "http://127.0.0.1:7890",
+  "tokensFile": "",
+  "bridgeEntry": "",
+  "usageUrl": "https://chatgpt.com/backend-api/wham/usage",
+  "usageCacheSeconds": 60,
+  "probeUrl": "https://chatgpt.com/",
+  "probeCacheSeconds": 6,
+  "canaryModel": "gpt-6-sol",
+  "canaryTimeoutMs": 20000
+}

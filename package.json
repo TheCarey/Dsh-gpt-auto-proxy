@@ -1,0 +1,50 @@
+{
+  "name": "dsh-gpt-auto-proxy",
+  "version": "0.3.0",
+  "description": "ChatGPT (Codex) 本地代理随 DSH 启停，设置页显示账号套餐额度（5 小时 / 7 天窗口），主灯用一次极小的真实模型调用判断「现在能不能调用 GPT」。代理逻辑见 bridge/bridge.mjs。",
+  "license": "MIT",
+  "author": "TheCarey",
+  "type": "module",
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "chatgpt",
+    "codex",
+    "proxy",
+    "usage",
+    "quota"
+  ],
+  "main": "lib/host.js",
+  "exports": {
+    ".": "./lib/host.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "bridge",
+    "cordis.patch.yml",
+    "config.example.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots"
+      ],
+      "external": [
+        "react"
+      ]
+    }
+  }
+}

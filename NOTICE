@@ -1,0 +1,52 @@
+# NOTICE
+
+本项目的**自有代码**（`lib/host.js`、`lib/client.js`、`lib/usage-probe.mjs`、`bridge/bridge.mjs` 中
+非下述来源的部分、`package.json`、`cordis.patch.yml`、文档）以 MIT 许可证发布，见 `LICENSE`
+（版权人：TheCarey，2026）。
+
+## 第三方来源与致谢
+
+### 1. 模型目录（`bridge/bridge.mjs` 中的 `DEFAULT_MODELS`）
+
+`DEFAULT_MODELS` 的模型 id、显示名、上下文窗口与 token 上限，**取自 pi-ai 的 `openai-codex`
+provider 数据**（`@mariozechner/pi-ai`，作者 Mario Zechner）。原文件在该数组上方保留了来源注释：
+
+```js
+/** Model catalog lifted from pi-ai's openai-codex provider data. */
+```
+
+- 仅复制了**事实性数据字段**（模型 id、名称、窗口大小、能力标记），未复制其实现代码。
+- **pi-ai 采用 MIT 许可证**（已核对 npm 包 `@mariozechner/pi-ai` 的 `license` 字段为 `MIT`，
+  作者 Mario Zechner，仓库 https://github.com/badlogic/pi-mono ）。MIT 允许在保留版权与许可声明的前提下
+  自由使用、修改与再分发。为完整合规，此处附上其版权声明：
+
+  > MIT License — Copyright (c) Mario Zechner
+  > 完整条款见 https://github.com/badlogic/pi-mono/blob/main/LICENSE
+
+- 若你希望完全不依赖第三方数据，可删掉 `DEFAULT_MODELS` 数组，改为运行时从 `/v1/models` 拉取。
+
+### 2. OAuth 客户端标识与请求头约定
+
+`bridge/bridge.mjs` 与 `lib/usage-probe.mjs` 中出现的：
+
+- `CLIENT_ID = 'app_EMoamEEZ73f0CkXaXp7hrann'` —— OpenAI Codex CLI 的**公开** OAuth 客户端 ID；
+- `originator: 'codex_cli_rs'` / `codex_cli_rs (...)` 的 User-Agent 约定；
+- `chatgpt-account-id` 请求头、`JWT_CLAIM_PATH = 'https://api.openai.com/auth'` 等字段名。
+
+这些属于**公开接口约定与公开常量**，不是机密，也不构成对本项目的授权。它们的来源是
+OpenAI 官方开源的 Codex CLI（Apache-2.0）及其公开 API 行为。使用这些标识发起请求
+意味着你的流量会以「官方 CLI」的身份出现在上游——**这可能违反上游服务条款，风险由使用者承担**。
+
+### 3. DSH（DeepSeek Harness）
+
+本插件是 DSH 的第三方插件，依赖 DSH 提供的 `webServer` 与 client 注入槽。
+DSH 自身的许可证与版权归其作者所有，本仓库不包含 DSH 的任何代码。
+
+### 4. 无 OpenAI 代码
+
+本仓库**不包含** OpenAI 或 ChatGPT 的任何源代码。`bridge.mjs` 是针对公开 HTTP 接口
+行为编写的协议转换实现。
+
+## 商标
+
+ChatGPT、OpenAI、Codex 是 OpenAI 的商标。本项目与其无任何关联、未获其授权或背书。

@@ -1,0 +1,10 @@
+# DSH「ChatGPT 订阅服务 / 用量」
+#
+# 这一行同时激活「宿主半边」（lib/host.js：管 bridge 子进程 + 挂 /dsh-gpt-auto-proxy/* 路由）
+# 和 package.json 里 dsh.client 声明的网页半边（lib/client.js：设置页的「订阅服务 / 用量」）。
+#
+# ⚠ id 必须和 package.json 的 name、client.js 的 ModuleLoader id、设置页 section id 保持一致
+#   （本插件四处都叫 dsh-gpt-auto-proxy；section id 用短名 gpt-auto-proxy 也可以，见 client.js）。
+- insert:
+    - id: dsh-gpt-auto-proxy
+      name: 'dsh-gpt-auto-proxy'
