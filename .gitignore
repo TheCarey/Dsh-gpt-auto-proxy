@@ -1,0 +1,48 @@
+# 依赖与构建产物（不入库）
+node_modules/
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# ===== 私有数据 / 凭证：绝对不要提交 =====
+tokens.json
+*tokens*.json
+!*.example.json
+.env
+.env.*
+*.env
+auth.json
+credentials.json
+*cookie*
+*.session
+*.session.json
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+
+# ===== 日志与运行数据 =====
+*.log
+logs/
+gpt-auto-proxy/
+bridge.log
+sidecar.log
+
+# ===== 编辑器 / 系统垃圾 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# ===== 本地备份 / 临时文件 =====
+*.bak
+*.bak-*
+*.orig
+*.rej
+*.tmp
+*.tmp.*
